@@ -38,31 +38,27 @@ export class App {
 
     header.innerHTML = `
       <div class="header-top">
-        <h1 class="app-title">EIP-5564 Stealth Addresses</h1>
-        <span class="app-subtitle">Interactive Cryptographic Demo</span>
+        <span class="app-title">EIP-5564</span>
+        <span class="app-subtitle">Stealth Addresses</span>
       </div>
       <div class="header-controls">
-        <div class="mode-toggle-container">
-          <div class="mode-toggle" id="mode-toggle"></div>
-        </div>
-        <div class="format-toggle-container" id="format-toggle-container"></div>
+        <div class="mode-toggle" id="mode-toggle"></div>
+        <div id="format-toggle-container"></div>
       </div>
     `;
 
     this.root.appendChild(header);
 
-    // Render mode toggle
     const modeToggle = header.querySelector('#mode-toggle') as HTMLElement;
     this.renderModeToggle(modeToggle);
 
-    // Render format toggle
     const formatContainer = header.querySelector('#format-toggle-container') as HTMLElement;
     renderFormatToggle(formatContainer);
   }
 
   private renderModeToggle(container: HTMLElement): void {
     const modes: { id: AppMode; label: string }[] = [
-      { id: 'step', label: 'Step-by-step' },
+      { id: 'step', label: 'Step' },
       { id: 'live', label: 'Live' },
     ];
 
@@ -84,12 +80,6 @@ export class App {
     const content = document.createElement('main');
     content.className = 'app-content';
 
-    // Run Full Demo button
-    const demoBtn = document.createElement('div');
-    demoBtn.className = 'full-demo-container';
-    demoBtn.innerHTML = `<button class="btn btn-hero" id="btn-full-demo">Run Full Demo</button>`;
-    content.appendChild(demoBtn);
-
     renderOverview(content);
     renderKeygen(content, this.state);
     renderGenerate(content, this.state);
@@ -98,52 +88,6 @@ export class App {
     renderAnnouncer(content, this.state);
 
     this.root.appendChild(content);
-
-    // Full demo button handler
-    const fullDemoBtn = content.querySelector('#btn-full-demo') as HTMLButtonElement;
-    fullDemoBtn.addEventListener('click', () => this.runFullDemo());
-  }
-
-  private async runFullDemo(): Promise<void> {
-    const btn = document.querySelector('#btn-full-demo') as HTMLButtonElement;
-    btn.disabled = true;
-    btn.textContent = 'Running Demo...';
-
-    try {
-      // Phase 1: Generate keys
-      this.scrollToPhase('keygen');
-      const genBothBtn = document.querySelector('#btn-gen-both') as HTMLButtonElement;
-      genBothBtn.click();
-      await this.delay(1500);
-
-      // Phase 2: Generate stealth address
-      this.scrollToPhase('generate');
-      const computeBtn = document.querySelector('#btn-compute-stealth') as HTMLButtonElement;
-      computeBtn.click();
-      await this.delay(1500);
-
-      // Phase 3: Check stealth address
-      this.scrollToPhase('parse');
-      const checkBtn = document.querySelector('#btn-check-stealth') as HTMLButtonElement;
-      checkBtn.click();
-      await this.delay(1500);
-
-      // Phase 4: Derive stealth key
-      this.scrollToPhase('derive');
-      const deriveBtn = document.querySelector('#btn-derive-key') as HTMLButtonElement;
-      deriveBtn.click();
-      await this.delay(1500);
-
-      // Phase 5: Announcer
-      this.scrollToPhase('announcer');
-    } finally {
-      btn.disabled = false;
-      btn.textContent = 'Run Full Demo';
-    }
-  }
-
-  private delay(ms: number): Promise<void> {
-    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
   private scrollToPhase(phase: PhaseId): void {
