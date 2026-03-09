@@ -77,15 +77,15 @@
 /* ====== Base ====== */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 44px;
+  scroll-padding-top: 60px;
 }
 
 body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font);
-  font-size: 11px;
-  line-height: 1.45;
+  font-size: 15px;
+  line-height: 1.5;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -130,9 +130,9 @@ body::after {
 }
 
 /* ====== Scrollbar ====== */
-::-webkit-scrollbar { width: 3px; height: 3px; }
+::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--border-accent); border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: var(--border-accent); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
 
 /* ====== Header / Terminal Title Bar ====== */
@@ -142,11 +142,11 @@ body::after {
   z-index: 100;
   background: var(--bg-surface);
   border-bottom: 1px solid var(--border);
-  padding: 0 16px;
-  height: 36px;
+  padding: 0 22px;
+  height: 50px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   box-shadow: 0 1px 0 var(--border-glow);
 }
 
@@ -154,33 +154,33 @@ body::after {
 .app-header::before {
   content: '';
   flex-shrink: 0;
-  width: 40px;
-  height: 8px;
+  width: 56px;
+  height: 12px;
   background:
-    radial-gradient(circle at 4px 4px, #ff5f57 3px, transparent 3px),
-    radial-gradient(circle at 17px 4px, #febc2e 3px, transparent 3px),
-    radial-gradient(circle at 30px 4px, #28c840 3px, transparent 3px);
+    radial-gradient(circle at 6px 6px, #ff5f57 4px, transparent 4px),
+    radial-gradient(circle at 24px 6px, #febc2e 4px, transparent 4px),
+    radial-gradient(circle at 42px 6px, #28c840 4px, transparent 4px);
   opacity: 0.3;
 }
 
 .header-top {
   display: flex;
   align-items: baseline;
-  gap: 6px;
+  gap: 8px;
   white-space: nowrap;
 }
 
 .app-title {
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--c-address);
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   text-shadow: 0 0 12px rgba(199, 125, 255, 0.3);
 }
 
 .app-subtitle {
-  font-size: 10px;
+  font-size: 14px;
   color: var(--text-dim);
   letter-spacing: 0.5px;
 }
@@ -193,7 +193,7 @@ body::after {
 .header-controls {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   margin-left: auto;
 }
 
@@ -202,18 +202,18 @@ body::after {
   display: flex;
   gap: 0;
   border: 1px solid var(--border);
-  border-radius: 3px;
+  border-radius: 4px;
   overflow: hidden;
 }
 
 .toggle-btn {
-  padding: 2px 8px;
+  padding: 4px 12px;
   background: transparent;
   border: none;
   border-right: 1px solid var(--border);
   color: var(--text-dim);
   font-family: var(--font);
-  font-size: 9px;
+  font-size: 13px;
   letter-spacing: 0.8px;
   text-transform: uppercase;
   cursor: pointer;
@@ -241,9 +241,9 @@ body::after {
 
 /* ====== Content ====== */
 .app-content {
-  max-width: 960px;
+  max-width: 1340px;
   margin: 0 auto;
-  padding: 16px 20px;
+  padding: 22px 28px;
 }
 
 /* ====== Full Demo Button ====== */
@@ -253,10 +253,10 @@ body::after {
 
 /* ====== Phase Sections ====== */
 .phase-section {
-  margin-bottom: 20px;
-  padding: 14px 16px 16px;
+  margin-bottom: 28px;
+  padding: 20px 22px 22px;
   border: 1px solid var(--border);
-  border-radius: 5px;
+  border-radius: 6px;
   background: var(--bg-surface);
   position: relative;
 }
@@ -267,11 +267,11 @@ body::after {
 
 /* Terminal prompt before phase titles */
 .phase-title {
-  font-size: 12px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--text-heading);
-  margin-bottom: 2px;
-  letter-spacing: 0.3px;
+  margin-bottom: 4px;
+  letter-spacing: 0.4px;
 }
 
 .phase-title::before {
@@ -280,8 +280,8 @@ body::after {
 
 .phase-subtitle {
   color: var(--text-dim);
-  margin-bottom: 12px;
-  font-size: 10px;
+  margin-bottom: 16px;
+  font-size: 14px;
 }
 
 /* ====== Overview Section — Compact Nav ====== */
@@ -289,15 +289,15 @@ body::after {
   background: transparent;
   border: none;
   padding: 0;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .overview-section .phase-title {
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .overview-section .phase-subtitle {
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 
 .overview-flow {
@@ -305,21 +305,21 @@ body::after {
   grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
   align-items: stretch;
   gap: 0;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .overview-phase-box {
-  padding: 10px 10px 8px;
+  padding: 14px 14px 12px;
   background: var(--bg-surface);
   border: 1px solid var(--border);
-  border-radius: 4px;
+  border-radius: 5px;
   text-decoration: none;
   color: var(--text);
   transition: all 0.25s ease;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 5px;
   position: relative;
 }
 
@@ -356,21 +356,21 @@ body::after {
 
 .phase-box-title {
   font-weight: 700;
-  font-size: 10px;
+  font-size: 14px;
   color: var(--text-heading);
   letter-spacing: 0.3px;
 }
 
 .phase-box-desc {
-  font-size: 9px;
+  font-size: 13px;
   color: var(--text-dim);
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
 .phase-box-formula {
-  font-size: 9px;
+  font-size: 13px;
   color: var(--c-formula);
-  padding: 2px 5px;
+  padding: 3px 7px;
   background: rgba(255, 208, 0, 0.03);
   border: 1px solid rgba(255, 208, 0, 0.06);
   border-radius: 2px;
@@ -383,18 +383,18 @@ body::after {
   align-items: center;
   justify-content: center;
   color: var(--text-dim);
-  font-size: 12px;
+  font-size: 17px;
   flex-shrink: 0;
-  padding: 0 4px;
+  padding: 0 6px;
   opacity: 0.2;
 }
 
 .overview-announcer-link {
-  margin-top: 6px;
+  margin-top: 8px;
 }
 
 .overview-announcer-link .overview-phase-box {
-  max-width: 360px;
+  max-width: 500px;
   margin: 0 auto;
 }
 
@@ -402,14 +402,14 @@ body::after {
 .keys-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 8px;
+  gap: 14px;
+  margin-bottom: 12px;
 }
 
 /* ====== Input + Action Row (inline layout) ====== */
 .input-action-row {
   display: flex;
-  gap: 8px;
+  gap: 12px;
   align-items: center;
 }
 
@@ -438,7 +438,7 @@ body::after {
 /* ====== Phase Output (stepper + EC diagram) ====== */
 .phase-output {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   align-items: flex-start;
 }
 
@@ -458,15 +458,15 @@ body::after {
 
 /* ====== Buttons ====== */
 .btn {
-  padding: 5px 12px;
-  border-radius: 3px;
+  padding: 7px 17px;
+  border-radius: 4px;
   border: 1px solid var(--border);
   background: var(--bg-control);
   color: var(--text);
   cursor: pointer;
-  font-size: 10px;
+  font-size: 14px;
   font-family: var(--font);
-  letter-spacing: 0.3px;
+  letter-spacing: 0.4px;
   transition: all 0.15s ease;
   position: relative;
   overflow: hidden;
@@ -534,24 +534,24 @@ body::after {
 
 /* ====== Inputs ====== */
 .key-input-group {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .key-label {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 5px;
 }
 
 .label-text {
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.3px;
 }
 
 .input-row {
   display: flex;
-  gap: 4px;
+  gap: 6px;
   position: relative;
   flex-wrap: wrap;
 }
@@ -564,13 +564,13 @@ body::after {
 
 .key-input {
   flex: 1;
-  padding: 6px 10px;
+  padding: 8px 14px;
   background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: 3px;
+  border-radius: 4px;
   color: var(--text-bright);
   font-family: var(--font);
-  font-size: 10px;
+  font-size: 14px;
   outline: none;
   transition: all 0.2s ease;
   caret-color: var(--c-address);
@@ -579,7 +579,7 @@ body::after {
 
 .key-input::placeholder {
   color: var(--text-muted);
-  font-size: 9px;
+  font-size: 13px;
 }
 
 .key-input:focus {
@@ -593,14 +593,14 @@ body::after {
 }
 
 .meta-input {
-  font-size: 9px;
-  padding-left: 10px;
+  font-size: 13px;
+  padding-left: 14px;
 }
 
 .validation-msg {
-  font-size: 9px;
-  min-height: 13px;
-  padding-left: 2px;
+  font-size: 13px;
+  min-height: 18px;
+  padding-left: 3px;
   letter-spacing: 0.5px;
   font-weight: 500;
 }
@@ -631,17 +631,17 @@ body::after {
 .stepper-nav {
   display: flex;
   align-items: center;
-  gap: 3px;
-  padding: 6px 0;
-  margin: 8px 0 4px;
+  gap: 5px;
+  padding: 8px 0;
+  margin: 12px 0 6px;
   flex-wrap: wrap;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
 
 .stepper-btn {
-  width: 28px;
-  height: 22px;
+  width: 38px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -671,8 +671,8 @@ body::after {
 }
 
 .step-counter {
-  margin-left: 6px;
-  font-size: 9px;
+  margin-left: 8px;
+  font-size: 13px;
   color: var(--text-dim);
   letter-spacing: 0.8px;
   font-variant-numeric: tabular-nums;
@@ -681,16 +681,16 @@ body::after {
 .speed-control {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   margin-left: auto;
-  font-size: 9px;
+  font-size: 13px;
   color: var(--text-dim);
 }
 
 .speed-control input[type="range"] {
-  width: 60px;
+  width: 84px;
   accent-color: var(--c-address);
-  height: 2px;
+  height: 3px;
 }
 
 /* ====== Flow Pipeline — Vertical Layout ====== */
@@ -706,7 +706,7 @@ body::after {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 32px;
+  height: 44px;
   opacity: 0.25;
   transition: opacity 0.4s ease;
 }
@@ -727,7 +727,7 @@ body::after {
 /* ====== Flow Step Cards ====== */
 .flow-step-card {
   position: relative;
-  padding: 10px 14px;
+  padding: 14px 20px;
   border: 1px solid var(--border);
   border-radius: 5px;
   background: var(--bg-surface);
@@ -804,21 +804,21 @@ body::after {
 .flow-step-header {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 4px;
+  gap: 10px;
+  margin-bottom: 6px;
 }
 
 .flow-step-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 20px;
-  height: 20px;
-  padding: 0 4px;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 6px;
   background: var(--bg-control);
   color: var(--text-dim);
-  border-radius: 3px;
-  font-size: 10px;
+  border-radius: 4px;
+  font-size: 14px;
   font-weight: 700;
   border: 1px solid var(--border);
   font-variant-numeric: tabular-nums;
@@ -840,15 +840,15 @@ body::after {
 
 .flow-step-title {
   font-weight: 700;
-  font-size: 11px;
+  font-size: 15px;
   color: var(--text-heading);
   transition: color 0.3s;
 }
 
 .flow-step-formula {
-  font-size: 10px;
+  font-size: 14px;
   color: var(--c-formula);
-  padding: 3px 8px;
+  padding: 4px 12px;
   background: rgba(255, 208, 0, 0.03);
   border: 1px solid rgba(255, 208, 0, 0.06);
   border-radius: 3px;
@@ -866,9 +866,9 @@ body::after {
 }
 
 .flow-step-desc {
-  font-size: 11px;
+  font-size: 14px;
   color: var(--text);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   line-height: 1.5;
 }
 
@@ -876,17 +876,17 @@ body::after {
 .flow-step-values {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 5px;
   min-height: 0;
 }
 
 .flow-value-row {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   align-items: baseline;
   flex-wrap: wrap;
-  padding: 3px 8px;
-  border-radius: 3px;
+  padding: 5px 12px;
+  border-radius: 4px;
   background: rgba(0, 255, 168, 0.015);
   border: 1px solid rgba(0, 255, 168, 0.04);
   transition: all 0.3s ease;
@@ -902,14 +902,14 @@ body::after {
 }
 
 .flow-value-key {
-  font-size: 10px;
+  font-size: 14px;
   color: var(--text-dim);
   white-space: nowrap;
   flex-shrink: 0;
 }
 
 .flow-value-val {
-  font-size: 10px;
+  font-size: 14px;
   color: var(--c-public);
   word-break: break-all;
   font-family: var(--font);
@@ -920,8 +920,8 @@ body::after {
 .flow-value-val:not(.flow-value-complete)::after {
   content: '';
   display: inline-block;
-  width: 5px;
-  height: 11px;
+  width: 7px;
+  height: 15px;
   background: var(--c-address);
   margin-left: 1px;
   vertical-align: text-bottom;
@@ -960,14 +960,14 @@ body::after {
 
 /* ====== Live Results ====== */
 .live-results {
-  padding: 8px 0;
+  padding: 12px 0;
 }
 
 .live-title {
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--text-heading);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   letter-spacing: 0.3px;
 }
 
@@ -977,10 +977,10 @@ body::after {
 
 .result-row {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   align-items: baseline;
-  padding: 3px 8px;
-  margin-bottom: 1px;
+  padding: 5px 12px;
+  margin-bottom: 2px;
   flex-wrap: wrap;
   border-radius: 2px;
   transition: all 0.2s ease;
@@ -993,13 +993,13 @@ body::after {
 }
 
 .result-label {
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 500;
   white-space: nowrap;
 }
 
 .result-value {
-  font-size: 10px;
+  font-size: 14px;
   word-break: break-all;
   color: var(--text-bright);
   font-family: var(--font);
@@ -1007,40 +1007,40 @@ body::after {
 
 .result-highlight {
   background: rgba(199, 125, 255, 0.025);
-  border-left: 2px solid var(--c-address);
-  padding-left: 10px;
+  border-left: 3px solid var(--c-address);
+  padding-left: 14px;
   margin-left: -2px;
 }
 
 .result-success {
   background: rgba(0, 255, 168, 0.025);
-  border-left: 2px solid var(--c-success);
-  padding-left: 10px;
-  margin-left: -2px;
+  border-left: 3px solid var(--c-success);
+  padding-left: 14px;
+  margin-left: -3px;
 }
 
 .result-error {
   background: rgba(255, 45, 120, 0.025);
-  border-left: 2px solid var(--c-error);
-  padding-left: 10px;
-  margin-left: -2px;
+  border-left: 3px solid var(--c-error);
+  padding-left: 14px;
+  margin-left: -3px;
 }
 
 .meta-address-value {
-  font-size: 9px;
+  font-size: 13px;
 }
 
 /* ====== Verification Box ====== */
 .verification-box {
-  margin-top: 8px;
-  padding: 8px 12px;
-  border-left: 2px solid var(--border);
+  margin-top: 12px;
+  padding: 12px 16px;
+  border-left: 3px solid var(--border);
 }
 
 .verification-box h3,
 .verification-box h4 {
-  margin-bottom: 4px;
-  font-size: 11px;
+  margin-bottom: 6px;
+  font-size: 15px;
   color: var(--text-heading);
 }
 
@@ -1057,11 +1057,11 @@ body::after {
 }
 
 .verification-result {
-  margin-top: 4px;
-  padding: 4px 8px;
-  border-radius: 2px;
+  margin-top: 6px;
+  padding: 6px 12px;
+  border-radius: 3px;
   font-weight: 700;
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: 0.3px;
 }
 
@@ -1077,10 +1077,10 @@ body::after {
 
 /* ====== Info & Error Boxes ====== */
 .info-box {
-  border-left: 2px solid var(--border-accent);
-  padding: 6px 10px;
-  margin-bottom: 8px;
-  font-size: 10px;
+  border-left: 3px solid var(--border-accent);
+  padding: 8px 14px;
+  margin-bottom: 12px;
+  font-size: 14px;
   color: var(--text-dim);
   line-height: 1.45;
   background: rgba(255, 255, 255, 0.005);
@@ -1096,9 +1096,9 @@ body::after {
 
 .error-msg {
   color: var(--c-error);
-  padding: 6px 10px;
-  font-size: 10px;
-  border-left: 2px solid var(--c-error);
+  padding: 8px 14px;
+  font-size: 14px;
+  border-left: 3px solid var(--c-error);
   background: rgba(255, 45, 120, 0.025);
 }
 
@@ -1109,15 +1109,15 @@ body::after {
 /* ====== Parse Controls ====== */
 .parse-controls {
   display: flex;
-  gap: 4px;
-  margin-bottom: 8px;
+  gap: 6px;
+  margin-bottom: 12px;
 }
 
 /* ====== EC Diagram ====== */
 .ec-diagram {
-  max-width: 240px;
+  max-width: 336px;
   height: auto;
-  margin: 4px 0;
+  margin: 6px 0;
   opacity: 0.4;
   transition: opacity 0.3s;
 }
@@ -1128,14 +1128,14 @@ body::after {
 
 /* ====== Announcer Section ====== */
 .announcer-flow {
-  margin-bottom: 14px;
+  margin-bottom: 20px;
 }
 
 .flow-diagram {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 14px 16px;
+  gap: 8px;
+  padding: 20px 22px;
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 3px;
@@ -1144,9 +1144,9 @@ body::after {
 }
 
 .flow-box {
-  padding: 8px 14px;
-  border-radius: 4px;
-  font-size: 12px;
+  padding: 11px 20px;
+  border-radius: 5px;
+  font-size: 16px;
   font-weight: 600;
   text-align: center;
   white-space: nowrap;
@@ -1179,21 +1179,21 @@ body::after {
 
 .flow-arrow {
   color: var(--text);
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 700;
   opacity: 0.7;
 }
 
 /* ====== Event Structure ====== */
 .announcer-event-structure {
-  margin-bottom: 14px;
+  margin-bottom: 20px;
 }
 
 .announcer-event-structure h3,
 .announcer-metadata h3 {
-  font-size: 11px;
+  font-size: 15px;
   color: var(--text-heading);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   font-weight: 700;
   letter-spacing: 0.3px;
 }
@@ -1211,14 +1211,14 @@ body::after {
 
 .event-field {
   display: grid;
-  grid-template-columns: 130px 100px 1fr;
-  gap: 8px;
-  padding: 4px 10px;
+  grid-template-columns: 180px 140px 1fr;
+  gap: 10px;
+  padding: 6px 14px;
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 2px;
   align-items: center;
-  font-size: 10px;
+  font-size: 14px;
   transition: border-color 0.2s;
 }
 
@@ -1233,21 +1233,21 @@ body::after {
 
 .field-type {
   color: var(--text-dim);
-  font-size: 9px;
+  font-size: 13px;
   font-style: italic;
 }
 
 .field-desc {
   color: var(--text-dim);
-  font-size: 9px;
+  font-size: 13px;
 }
 
 /* ====== Metadata Constructor ====== */
 .metadata-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
 .metadata-byte-map {
@@ -1258,14 +1258,14 @@ body::after {
 
 .byte-range {
   display: grid;
-  grid-template-columns: 70px 100px 1fr;
-  gap: 6px;
-  padding: 4px 8px;
+  grid-template-columns: 100px 140px 1fr;
+  gap: 8px;
+  padding: 6px 12px;
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 2px;
   align-items: center;
-  font-size: 10px;
+  font-size: 14px;
   transition: border-color 0.2s;
 }
 
@@ -1275,47 +1275,47 @@ body::after {
 
 .byte-offset {
   color: var(--text-dim);
-  font-size: 9px;
+  font-size: 13px;
   font-variant-numeric: tabular-nums;
 }
 
 .byte-label {
   font-weight: 500;
   color: var(--text);
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .byte-value {
   color: var(--c-formula);
-  font-size: 9px;
+  font-size: 13px;
   word-break: break-all;
 }
 
 .metadata-inputs {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
 .meta-input-group {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 5px;
 }
 
 .meta-input-group label {
-  font-size: 10px;
+  font-size: 14px;
   color: var(--text-dim);
   letter-spacing: 0.3px;
 }
 
 .meta-input-group select {
-  padding: 5px 8px;
+  padding: 7px 12px;
   background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: 3px;
+  border-radius: 4px;
   color: var(--text);
-  font-size: 10px;
+  font-size: 14px;
   font-family: var(--font);
   outline: none;
   cursor: pointer;
@@ -1328,20 +1328,20 @@ body::after {
 }
 
 .metadata-description {
-  font-size: 10px;
+  font-size: 14px;
   color: var(--text-dim);
-  margin-bottom: 10px;
+  margin-bottom: 14px;
   line-height: 1.45;
 }
 
 .metadata-output {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .metadata-output h4 {
-  font-size: 10px;
+  font-size: 14px;
   color: var(--text-dim);
-  margin-bottom: 3px;
+  margin-bottom: 5px;
 }
 
 .metadata-output h4::before {
@@ -1350,15 +1350,15 @@ body::after {
 
 .metadata-hex {
   display: block;
-  padding: 6px 10px;
+  padding: 8px 14px;
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 3px;
   word-break: break-all;
-  font-size: 9px;
+  font-size: 13px;
   font-family: var(--font);
   color: var(--c-public);
-  max-height: 60px;
+  max-height: 84px;
   overflow-y: auto;
   line-height: 1.5;
 }
@@ -1366,19 +1366,19 @@ body::after {
 .metadata-bin {
   display: grid;
   place-content: start;
-  padding: 8px 10px;
+  padding: 12px 14px;
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 3px;
   word-break: break-all;
-  font-size: 8px;
+  font-size: 11px;
   font-family: var(--font);
   color: var(--c-public);
   line-height: 1.6;
   overflow-y: auto;
   aspect-ratio: 1;
-  max-width: 320px;
-  max-height: 320px;
+  max-width: 448px;
+  max-height: 448px;
 }
 
 /* ====== Event Example ====== */
@@ -1391,12 +1391,12 @@ body::after {
 .event-example-field {
   display: flex;
   align-items: baseline;
-  gap: 8px;
-  padding: 4px 10px;
+  gap: 10px;
+  padding: 6px 14px;
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 2px;
-  font-size: 10px;
+  font-size: 14px;
   transition: border-color 0.2s;
 }
 
@@ -1405,19 +1405,19 @@ body::after {
 }
 
 .event-example-field .field-name {
-  min-width: 120px;
+  min-width: 168px;
 }
 
 .event-example-field code {
   word-break: break-all;
   color: var(--text-bright);
   font-family: var(--font);
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .field-note {
   color: var(--text-dim);
-  font-size: 9px;
+  font-size: 13px;
   font-style: italic;
 }
 
@@ -1425,18 +1425,18 @@ body::after {
 .value-display {
   display: inline-flex;
   align-items: baseline;
-  gap: 4px;
+  gap: 6px;
 }
 
 .value-label {
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 500;
 }
 
 .value-content {
   word-break: break-all;
   font-family: var(--font);
-  font-size: 10px;
+  font-size: 14px;
   color: var(--text-bright);
 }
 
@@ -1464,6 +1464,27 @@ body::after {
 
 .value-changed {
   animation: highlightFlash 0.8s ease;
+}
+
+/* ====== Footer ====== */
+.app-footer {
+  margin-top: 32px;
+  padding: 20px 0;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+.app-footer a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+
+.app-footer a:hover {
+  color: var(--c-address);
+  text-shadow: 0 0 8px rgba(199, 125, 255, 0.3);
 }
 
 /* ====== Responsive ====== */
@@ -1502,9 +1523,9 @@ body::after {
   }
 
   .app-header {
-    padding: 0 10px;
-    height: 32px;
-    gap: 6px;
+    padding: 0 14px;
+    height: 44px;
+    gap: 8px;
   }
 
   .app-header::before {
@@ -1512,12 +1533,12 @@ body::after {
   }
 
   .app-content {
-    padding: 10px 8px;
+    padding: 14px 12px;
   }
 
   .phase-section {
-    padding: 10px 12px 12px;
-    margin-bottom: 12px;
+    padding: 14px 16px 16px;
+    margin-bottom: 16px;
   }
 
   .byte-range {
@@ -1530,21 +1551,21 @@ body::after {
   }
 
   .flow-step-card {
-    padding: 8px 10px;
+    padding: 12px 14px;
   }
 
   .flow-arrow-connector {
-    height: 24px;
+    height: 34px;
   }
 
   .flow-value-row {
-    padding: 2px 6px;
+    padding: 4px 8px;
   }
 }
 
 @media (max-width: 480px) {
   .phase-section {
-    padding: 8px 10px;
+    padding: 12px 14px;
   }
 
   .flow-diagram {

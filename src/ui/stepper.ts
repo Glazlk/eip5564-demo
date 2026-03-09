@@ -40,8 +40,8 @@ export class Stepper {
     const btnPlay = document.createElement('button');
     btnPlay.className = 'stepper-btn flow-btn-play';
     btnPlay.innerHTML = this.isPlaying
-      ? '<svg width="10" height="10" viewBox="0 0 10 10"><rect x="1" y="1" width="3" height="8" fill="currentColor"/><rect x="6" y="1" width="3" height="8" fill="currentColor"/></svg>'
-      : '<svg width="10" height="10" viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9" fill="currentColor"/></svg>';
+      ? '<svg width="14" height="14" viewBox="0 0 10 10"><rect x="1" y="1" width="3" height="8" fill="currentColor"/><rect x="6" y="1" width="3" height="8" fill="currentColor"/></svg>'
+      : '<svg width="14" height="14" viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9" fill="currentColor"/></svg>';
     btnPlay.title = this.isPlaying ? 'Pause' : 'Play animation';
     btnPlay.addEventListener('click', () => this.togglePlay());
     this.navContainer.appendChild(btnPlay);
@@ -49,7 +49,7 @@ export class Stepper {
     // Step forward
     const btnNext = document.createElement('button');
     btnNext.className = 'stepper-btn';
-    btnNext.innerHTML = '<svg width="10" height="10" viewBox="0 0 10 10"><polygon points="1,1 6,5 1,9" fill="currentColor"/><rect x="7" y="1" width="2" height="8" fill="currentColor"/></svg>';
+    btnNext.innerHTML = '<svg width="14" height="14" viewBox="0 0 10 10"><polygon points="1,1 6,5 1,9" fill="currentColor"/><rect x="7" y="1" width="2" height="8" fill="currentColor"/></svg>';
     btnNext.title = 'Next step';
     btnNext.addEventListener('click', () => this.next());
     this.navContainer.appendChild(btnNext);
@@ -57,7 +57,7 @@ export class Stepper {
     // Skip to end
     const btnEnd = document.createElement('button');
     btnEnd.className = 'stepper-btn';
-    btnEnd.innerHTML = '<svg width="10" height="10" viewBox="0 0 10 10"><polygon points="0,1 4,5 0,9" fill="currentColor"/><polygon points="4,1 8,5 4,9" fill="currentColor"/><rect x="8" y="1" width="2" height="8" fill="currentColor"/></svg>';
+    btnEnd.innerHTML = '<svg width="14" height="14" viewBox="0 0 10 10"><polygon points="0,1 4,5 0,9" fill="currentColor"/><polygon points="4,1 8,5 4,9" fill="currentColor"/><rect x="8" y="1" width="2" height="8" fill="currentColor"/></svg>';
     btnEnd.title = 'Show all steps';
     btnEnd.addEventListener('click', () => this.showAllInstant());
     this.navContainer.appendChild(btnEnd);
@@ -65,7 +65,7 @@ export class Stepper {
     // Reset
     const btnReset = document.createElement('button');
     btnReset.className = 'stepper-btn';
-    btnReset.innerHTML = '<svg width="10" height="10" viewBox="0 0 10 10"><path d="M8,2 A4,4 0 1,0 8,8" fill="none" stroke="currentColor" stroke-width="1.5"/><polygon points="8,0 10,2.5 6,2.5" fill="currentColor"/></svg>';
+    btnReset.innerHTML = '<svg width="14" height="14" viewBox="0 0 10 10"><path d="M8,2 A4,4 0 1,0 8,8" fill="none" stroke="currentColor" stroke-width="1.5"/><polygon points="8,0 10,2.5 6,2.5" fill="currentColor"/></svg>';
     btnReset.title = 'Reset';
     btnReset.addEventListener('click', () => this.reset());
     this.navContainer.appendChild(btnReset);
@@ -111,9 +111,9 @@ export class Stepper {
         const arrow = document.createElement('div');
         arrow.className = 'flow-arrow-connector';
         arrow.innerHTML = `
-          <svg width="24" height="32" viewBox="0 0 24 32">
-            <line x1="12" y1="0" x2="12" y2="22" stroke="var(--border-accent)" stroke-width="1.5" stroke-dasharray="3,3" class="flow-arrow-line"/>
-            <polygon points="7,20 12,28 17,20" fill="var(--border-accent)" class="flow-arrow-head"/>
+          <svg width="34" height="44" viewBox="0 0 34 44">
+            <line x1="17" y1="0" x2="17" y2="32" stroke="var(--border-accent)" stroke-width="2" stroke-dasharray="4,4" class="flow-arrow-line"/>
+            <polygon points="10,30 17,40 24,30" fill="var(--border-accent)" class="flow-arrow-head"/>
           </svg>
         `;
         this.flowContainer.appendChild(arrow);
@@ -345,8 +345,8 @@ export class Stepper {
     const playBtn = this.navContainer.querySelector('.flow-btn-play');
     if (playBtn) {
       playBtn.innerHTML = this.isPlaying
-        ? '<svg width="10" height="10" viewBox="0 0 10 10"><rect x="1" y="1" width="3" height="8" fill="currentColor"/><rect x="6" y="1" width="3" height="8" fill="currentColor"/></svg>'
-        : '<svg width="10" height="10" viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9" fill="currentColor"/></svg>';
+        ? '<svg width="14" height="14" viewBox="0 0 10 10"><rect x="1" y="1" width="3" height="8" fill="currentColor"/><rect x="6" y="1" width="3" height="8" fill="currentColor"/></svg>'
+        : '<svg width="14" height="14" viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9" fill="currentColor"/></svg>';
     }
   }
 

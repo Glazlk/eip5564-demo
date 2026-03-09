@@ -87,6 +87,14 @@ export class App {
     renderDerive(content, this.state);
     renderAnnouncer(content, this.state);
 
+    // Footer
+    const footer = document.createElement('footer');
+    footer.className = 'app-footer';
+    footer.innerHTML = `
+      <a href="https://github.com/Glazlk" target="_blank" rel="noopener">github.com/Glazlk</a>
+    `;
+    content.appendChild(footer);
+
     this.root.appendChild(content);
   }
 
