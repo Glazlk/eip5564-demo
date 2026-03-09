@@ -11,33 +11,37 @@ export function renderKeygen(container: HTMLElement, state: AppState): void {
   section.className = 'phase-section';
 
   section.innerHTML = `
-    <h2 class="phase-title">Phase 1: Key Setup</h2>
+    <h2 class="phase-title">phase 1: key setup</h2>
     <p class="phase-subtitle">Generate or enter spending and viewing key pairs, then derive the stealth meta-address</p>
     <div class="keygen-inputs">
-      <div class="key-input-group">
-        <label class="key-label">
-          <span class="label-text private-key-color">Spending Private Key (p_spend)</span>
-          <div class="input-row">
-            <input type="text" class="key-input" id="input-spend-priv" placeholder="Enter 64 hex chars or generate" />
-            <button class="btn btn-generate" id="btn-gen-spend">Generate</button>
-          </div>
-          <div class="validation-msg" id="validation-spend"></div>
-        </label>
-      </div>
-      <div class="key-input-group">
-        <label class="key-label">
-          <span class="label-text private-key-color">Viewing Private Key (p_view)</span>
-          <div class="input-row">
-            <input type="text" class="key-input" id="input-view-priv" placeholder="Enter 64 hex chars or generate" />
-            <button class="btn btn-generate" id="btn-gen-view">Generate</button>
-          </div>
-          <div class="validation-msg" id="validation-view"></div>
-        </label>
+      <div class="keys-grid">
+        <div class="key-input-group">
+          <label class="key-label">
+            <span class="label-text private-key-color">Spending Private Key (p_spend)</span>
+            <div class="input-row">
+              <input type="text" class="key-input" id="input-spend-priv" placeholder="64 hex chars or generate" />
+              <button class="btn btn-generate" id="btn-gen-spend">Gen</button>
+            </div>
+            <div class="validation-msg" id="validation-spend"></div>
+          </label>
+        </div>
+        <div class="key-input-group">
+          <label class="key-label">
+            <span class="label-text private-key-color">Viewing Private Key (p_view)</span>
+            <div class="input-row">
+              <input type="text" class="key-input" id="input-view-priv" placeholder="64 hex chars or generate" />
+              <button class="btn btn-generate" id="btn-gen-view">Gen</button>
+            </div>
+            <div class="validation-msg" id="validation-view"></div>
+          </label>
+        </div>
       </div>
       <button class="btn btn-primary" id="btn-gen-both">Generate Both Keys</button>
     </div>
-    <div class="keygen-stepper" id="keygen-stepper"></div>
-    <div class="keygen-ec-diagram" id="keygen-ec-diagram"></div>
+    <div class="phase-output">
+      <div class="keygen-stepper" id="keygen-stepper"></div>
+      <div class="keygen-ec-diagram" id="keygen-ec-diagram"></div>
+    </div>
     <div class="keygen-result" id="keygen-result"></div>
   `;
 

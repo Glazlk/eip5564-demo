@@ -4,29 +4,29 @@ export function renderOverview(container: HTMLElement): void {
   section.className = 'phase-section overview-section';
 
   section.innerHTML = `
-    <h2 class="phase-title">Protocol Overview</h2>
-    <p class="phase-subtitle">EIP-5564 stealth address protocol — click a phase to explore</p>
+    <h2 class="phase-title">protocol overview</h2>
+    <p class="phase-subtitle">EIP-5564 stealth address protocol &mdash; click a phase to explore</p>
     <div class="overview-flow">
       <a href="#keygen" class="overview-phase-box">
-        <div class="phase-box-title">1. Key Setup</div>
+        <div class="phase-box-title">01 &middot; Key Setup</div>
         <div class="phase-box-desc">Generate spend & view key pairs</div>
-        <div class="phase-box-formula">p → P = p · G</div>
+        <div class="phase-box-formula">p &rarr; P = p &middot; G</div>
       </a>
-      <div class="overview-arrow">→</div>
+      <div class="overview-arrow">&rarr;</div>
       <a href="#generate" class="overview-phase-box">
-        <div class="phase-box-title">2. Generate</div>
+        <div class="phase-box-title">02 &middot; Generate</div>
         <div class="phase-box-desc">Sender creates stealth address via ECDH</div>
-        <div class="phase-box-formula">P_st = P_spend + H(s) · G</div>
+        <div class="phase-box-formula">P_st = P_spend + H(s) &middot; G</div>
       </a>
-      <div class="overview-arrow">→</div>
+      <div class="overview-arrow">&rarr;</div>
       <a href="#parse" class="overview-phase-box">
-        <div class="phase-box-title">3. Parse</div>
+        <div class="phase-box-title">03 &middot; Parse</div>
         <div class="phase-box-desc">Recipient checks ownership via view tag</div>
-        <div class="phase-box-formula">v = H(s)[0] → verify</div>
+        <div class="phase-box-formula">v = H(s)[0] &rarr; verify</div>
       </a>
-      <div class="overview-arrow">→</div>
+      <div class="overview-arrow">&rarr;</div>
       <a href="#derive" class="overview-phase-box">
-        <div class="phase-box-title">4. Derive</div>
+        <div class="phase-box-title">04 &middot; Derive</div>
         <div class="phase-box-desc">Recipient computes stealth private key</div>
         <div class="phase-box-formula">p_st = p_spend + H(s)</div>
       </a>
@@ -34,7 +34,7 @@ export function renderOverview(container: HTMLElement): void {
     <div class="overview-announcer-link">
       <a href="#announcer" class="overview-phase-box">
         <div class="phase-box-title">Announcer Contract</div>
-        <div class="phase-box-desc">ERC5564Announcer — on-chain announcement events</div>
+        <div class="phase-box-desc">ERC5564Announcer &mdash; on-chain announcement events</div>
         <div class="phase-box-formula">emit Announcement(schemeId, addr, ephKey, metadata)</div>
       </a>
     </div>

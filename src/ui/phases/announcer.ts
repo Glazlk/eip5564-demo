@@ -10,8 +10,8 @@ export function renderAnnouncer(container: HTMLElement, state: AppState): void {
   section.className = 'phase-section';
 
   section.innerHTML = `
-    <h2 class="phase-title">Announcer Contract</h2>
-    <p class="phase-subtitle">ERC5564Announcer — singleton contract for publishing stealth address Announcement events</p>
+    <h2 class="phase-title">announcer contract</h2>
+    <p class="phase-subtitle">ERC5564Announcer &mdash; singleton contract for publishing stealth address Announcement events</p>
 
     <div class="announcer-flow">
       <div class="flow-diagram">

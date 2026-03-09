@@ -12,7 +12,7 @@ export function renderGenerate(container: HTMLElement, state: AppState): void {
   section.className = 'phase-section';
 
   section.innerHTML = `
-    <h2 class="phase-title">Phase 2: Generate Stealth Address</h2>
+    <h2 class="phase-title">phase 2: generate stealth address</h2>
     <p class="phase-subtitle">Sender creates a one-time stealth address from the recipient's stealth meta-address</p>
     <div class="generate-inputs">
       <div class="key-input-group">
@@ -26,14 +26,16 @@ export function renderGenerate(container: HTMLElement, state: AppState): void {
           <span class="label-text private-key-color">Ephemeral Private Key (p_ephemeral)</span>
           <div class="input-row">
             <input type="text" class="key-input" id="input-eph-priv" placeholder="Auto-generated or enter 64 hex chars" />
-            <button class="btn btn-generate" id="btn-gen-eph">Generate</button>
+            <button class="btn btn-generate" id="btn-gen-eph">Gen</button>
+            <button class="btn btn-primary" id="btn-compute-stealth">Compute</button>
           </div>
         </label>
       </div>
-      <button class="btn btn-primary" id="btn-compute-stealth">Compute Stealth Address</button>
     </div>
-    <div class="generate-stepper" id="generate-stepper"></div>
-    <div class="generate-ec-diagram" id="generate-ec-diagram"></div>
+    <div class="phase-output">
+      <div class="generate-stepper" id="generate-stepper"></div>
+      <div class="generate-ec-diagram" id="generate-ec-diagram"></div>
+    </div>
     <div class="generate-result" id="generate-result"></div>
   `;
 

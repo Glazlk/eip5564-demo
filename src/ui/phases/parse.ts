@@ -11,19 +11,23 @@ export function renderParse(container: HTMLElement, state: AppState): void {
   section.className = 'phase-section';
 
   section.innerHTML = `
-    <h2 class="phase-title">Phase 3: Parse Announcements</h2>
+    <h2 class="phase-title">phase 3: parse announcements</h2>
     <p class="phase-subtitle">Recipient checks if a stealth address belongs to them using their viewing key</p>
     <div class="parse-inputs">
-      <div class="info-box">
-        <p>Using data from Phase 1 (viewing key, spending public key) and Phase 2 (ephemeral public key, view tag, stealth address) to check ownership.</p>
-      </div>
-      <div class="parse-controls">
-        <button class="btn btn-primary" id="btn-check-stealth">Check Stealth Address</button>
-        <button class="btn btn-secondary" id="btn-wrong-tag">Try Wrong View Tag</button>
+      <div class="input-action-row">
+        <div class="info-box">
+          <p>Uses Phase 1 keys + Phase 2 ephemeral data to check ownership.</p>
+        </div>
+        <div class="parse-controls">
+          <button class="btn btn-primary" id="btn-check-stealth">Check</button>
+          <button class="btn btn-secondary" id="btn-wrong-tag">Wrong Tag</button>
+        </div>
       </div>
     </div>
-    <div class="parse-stepper" id="parse-stepper"></div>
-    <div class="parse-ec-diagram" id="parse-ec-diagram"></div>
+    <div class="phase-output">
+      <div class="parse-stepper" id="parse-stepper"></div>
+      <div class="parse-ec-diagram" id="parse-ec-diagram"></div>
+    </div>
     <div class="parse-result" id="parse-result"></div>
   `;
 
@@ -220,7 +224,7 @@ export function renderParse(container: HTMLElement, state: AppState): void {
     if (r.earlyExit) {
       stepper.setOnStepChange((step) => {
         if (step >= 3) {
-          const panels = stepperContainer.querySelectorAll('.step-panel');
+          const panels = stepperContainer.querySelectorAll('.flow-step-card');
           panels.forEach((p, i) => {
             if (i >= 3) {
               p.classList.add('step-skipped');

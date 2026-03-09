@@ -38,8 +38,8 @@ export class App {
 
     header.innerHTML = `
       <div class="header-top">
-        <span class="app-title">EIP-5564</span>
-        <span class="app-subtitle">Stealth Addresses</span>
+        <span class="app-title">eip-5564</span>
+        <span class="app-subtitle">stealth addresses</span>
       </div>
       <div class="header-controls">
         <div class="mode-toggle" id="mode-toggle"></div>

@@ -11,17 +11,20 @@ export function renderDerive(container: HTMLElement, state: AppState): void {
   section.className = 'phase-section';
 
   section.innerHTML = `
-    <h2 class="phase-title">Phase 4: Derive Stealth Private Key</h2>
+    <h2 class="phase-title">phase 4: derive stealth private key</h2>
     <p class="phase-subtitle">Recipient computes the private key to control the stealth address</p>
     <div class="derive-inputs">
-      <div class="info-box">
-        <p>Using the spending private key (p_spend), viewing private key (p_view), and the ephemeral public key (P_ephemeral) from the announcement.</p>
-        <p><strong>Only the recipient</strong> who knows both p_spend and p_view can derive this key.</p>
+      <div class="input-action-row">
+        <div class="info-box">
+          <p>Uses p_spend, p_view, and P_ephemeral. <strong>Only the recipient</strong> can derive this key.</p>
+        </div>
+        <button class="btn btn-primary" id="btn-derive-key">Derive Key</button>
       </div>
-      <button class="btn btn-primary" id="btn-derive-key">Derive Stealth Private Key</button>
     </div>
-    <div class="derive-stepper" id="derive-stepper"></div>
-    <div class="derive-ec-diagram" id="derive-ec-diagram"></div>
+    <div class="phase-output">
+      <div class="derive-stepper" id="derive-stepper"></div>
+      <div class="derive-ec-diagram" id="derive-ec-diagram"></div>
+    </div>
     <div class="derive-result" id="derive-result"></div>
   `;
 
