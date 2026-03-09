@@ -91,7 +91,7 @@ export class App {
     const footer = document.createElement('footer');
     footer.className = 'app-footer';
     footer.innerHTML = `
-      <a href="https://github.com/Glazlk" target="_blank" rel="noopener">github.com/Glazlk</a>
+      <a href="https://github.com/Glazlk/eip5564-demo" target="_blank" rel="noopener">GitHub</a>
     `;
     content.appendChild(footer);
 
