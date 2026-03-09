@@ -1,42 +1,54 @@
 /* ============================================================
    EIP-5564 Stealth Addresses — Interactive Demo
-   Design inspired by sha256algorithm.com
-   Dark, monospace, compact, terminal-aesthetic
+   Low-contrast terminal utility aesthetic
+   Inspired by Nord / Tokyo Night — muted ANSI palette
    ============================================================ */
 
 /* ====== CSS Custom Properties ====== */
 :root {
-  /* Backgrounds */
-  --bg: #111827;
-  --bg-surface: #1f2937;
-  --bg-control: #374151;
-  --bg-control-hover: #4b5563;
-  --bg-active: #b91c1c;
-  --bg-active-hover: #dc2626;
+  /* Backgrounds — cool dark navy, subtle tier separation */
+  --bg: #1a1b26;
+  --bg-surface: #1f2335;
+  --bg-control: #292e42;
+  --bg-control-hover: #343a52;
+  --bg-active: #394b70;
+  --bg-active-hover: #3d5280;
 
-  /* Text — color = meaning */
-  --text: #a5b4fc;          /* indigo-300 — default */
-  --text-heading: #c7d2fe;  /* indigo-200 — headings */
-  --text-dim: #6b7280;      /* gray-500 */
-  --text-white: #f9fafb;    /* gray-50 */
+  /* Text — low contrast, muted lavender base */
+  --text: #7982a9;
+  --text-heading: #a9b1d6;
+  --text-dim: #3d4260;
+  --text-bright: #b4bcd8;
 
-  /* Semantic variable colors */
-  --c-private: #f87171;     /* red-400 — private keys */
-  --c-public: #4ade80;      /* green-400 — public keys */
-  --c-shared: #60a5fa;      /* blue-400 — shared secrets */
-  --c-address: #c084fc;     /* purple-400 — stealth addresses */
-  --c-formula: #fbbf24;     /* amber-400 — formulas */
-  --c-viewtag: #fb923c;     /* orange-400 — view tags */
-  --c-success: #4ade80;     /* green-400 */
-  --c-error: #f87171;       /* red-400 */
-  --c-match: #22c55e;       /* green-500 */
-  --c-nomatch: #ef4444;     /* red-500 */
+  /* Semantic — desaturated console ANSI palette */
+  --c-private: #b4637a;     /* muted rose — private keys */
+  --c-public: #7aa87a;      /* muted sage — public keys */
+  --c-shared: #6e8fbb;      /* muted steel — shared secrets */
+  --c-address: #8b7ec8;     /* muted iris — addresses */
+  --c-formula: #b89d6a;     /* muted amber — formulas */
+  --c-viewtag: #a07e62;     /* muted rust — view tags */
+  --c-success: #6aab8e;     /* muted teal */
+  --c-error: #a05565;       /* muted crimson */
+  --c-match: #6aab8e;
+  --c-nomatch: #a05565;
 
-  /* Borders */
-  --border: #374151;
+  /* Borders — barely visible */
+  --border: #262b3d;
 
   /* Font */
   --font: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', ui-monospace, 'Consolas', monospace;
+
+  /* Legacy aliases for inline SVG / TypeScript references */
+  --color-bg: var(--bg);
+  --color-surface: var(--bg-surface);
+  --color-text: var(--text);
+  --color-text-dim: var(--text-dim);
+  --color-accent: var(--c-shared);
+  --color-highlight: var(--c-formula);
+  --color-private: var(--c-private);
+  --color-public: var(--c-public);
+  --color-shared: var(--c-shared);
+  --color-address: var(--c-address);
 }
 
 /* ====== Reset ====== */
@@ -63,15 +75,15 @@ body {
 }
 
 ::selection {
-  background: rgba(99, 102, 241, 0.3);
-  color: var(--text-white);
+  background: rgba(57, 75, 112, 0.5);
+  color: var(--text-bright);
 }
 
 /* ====== Scrollbar ====== */
-::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
+::-webkit-scrollbar-thumb:hover { background: var(--bg-control); }
 
 /* ====== Control Bar (Header) ====== */
 .app-header {
@@ -105,6 +117,7 @@ body {
   color: var(--text-dim);
 }
 
+/* ====== Header Controls ====== */
 .header-controls {
   display: flex;
   align-items: center;
@@ -139,7 +152,7 @@ body {
 
 .toggle-btn.active {
   background: var(--bg-active);
-  color: var(--text-white);
+  color: var(--text-bright);
   font-weight: 600;
 }
 
@@ -197,7 +210,7 @@ body {
   border-radius: 4px;
   text-decoration: none;
   color: var(--text);
-  transition: border-color 0.2s, opacity 0.3s;
+  transition: border-color 0.25s;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -205,7 +218,7 @@ body {
 }
 
 .overview-phase-box:hover {
-  border-color: var(--text-dim);
+  border-color: var(--bg-control-hover);
 }
 
 .phase-icon {
@@ -228,7 +241,7 @@ body {
   font-size: 10px;
   color: var(--c-formula);
   padding: 2px 4px;
-  background: rgba(251, 191, 36, 0.08);
+  background: rgba(184, 157, 106, 0.06);
   border-radius: 2px;
   margin-top: 2px;
 }
@@ -260,16 +273,17 @@ body {
   cursor: pointer;
   font-size: 11px;
   font-family: var(--font);
-  transition: background 0.15s;
+  transition: background 0.15s, color 0.15s;
 }
 
 .btn:hover {
   background: var(--bg-control-hover);
+  color: var(--text-heading);
 }
 
 .btn-primary {
   background: var(--bg-active);
-  color: var(--text-white);
+  color: var(--text-bright);
   font-weight: 600;
 }
 
@@ -284,7 +298,7 @@ body {
 }
 
 .btn-secondary:hover {
-  background: rgba(248, 113, 113, 0.1);
+  background: rgba(160, 85, 101, 0.08);
 }
 
 .btn-generate {
@@ -327,7 +341,7 @@ body {
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 3px;
-  color: var(--text-white);
+  color: var(--text-bright);
   font-family: var(--font);
   font-size: 11px;
   outline: none;
@@ -335,11 +349,11 @@ body {
 }
 
 .key-input:focus {
-  border-color: var(--text-dim);
+  border-color: var(--bg-control-hover);
 }
 
 .key-input[readonly] {
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 .meta-input {
@@ -382,17 +396,18 @@ body {
   color: var(--text);
   font-size: 11px;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: background 0.15s, color 0.15s;
 }
 
 .stepper-btn:hover {
   background: var(--bg-control-hover);
+  color: var(--text-heading);
 }
 
-/* Highlight the "next step" button like the red Clock button in sha256 */
+/* Primary step button — muted teal accent */
 .stepper-btn:nth-child(3) {
   background: var(--bg-active);
-  color: var(--text-white);
+  color: var(--text-bright);
 }
 
 .stepper-btn:nth-child(3):hover {
@@ -416,7 +431,7 @@ body {
 
 .speed-control input[type="range"] {
   width: 80px;
-  accent-color: var(--bg-active);
+  accent-color: var(--c-shared);
   height: 3px;
 }
 
@@ -426,6 +441,7 @@ body {
   margin: 4px 0;
   border-left: 2px solid var(--border);
   transition: opacity 0.5s, border-color 0.3s;
+  animation: slideIn 0.2s ease;
 }
 
 .step-panel.hidden {
@@ -433,16 +449,16 @@ body {
 }
 
 .step-panel.active {
-  border-left-color: var(--bg-active);
-  background: rgba(185, 28, 28, 0.04);
+  border-left-color: var(--c-shared);
+  background: rgba(110, 143, 187, 0.03);
 }
 
 .step-panel.dimmed {
-  opacity: 0.35;
+  opacity: 0.3;
 }
 
 .step-panel.step-skipped {
-  opacity: 0.25;
+  opacity: 0.2;
   border-left-color: var(--c-error);
 }
 
@@ -473,7 +489,7 @@ body {
 
 .step-panel.active .step-number {
   background: var(--bg-active);
-  color: var(--text-white);
+  color: var(--text-bright);
 }
 
 .step-title {
@@ -486,7 +502,7 @@ body {
   font-size: 11px;
   color: var(--c-formula);
   padding: 3px 6px;
-  background: rgba(251, 191, 36, 0.06);
+  background: rgba(184, 157, 106, 0.05);
   border-radius: 2px;
   margin-bottom: 3px;
   display: inline-block;
@@ -520,9 +536,9 @@ body {
 
 .step-value-val {
   font-size: 11px;
-  color: var(--text-white);
+  color: var(--text-bright);
   word-break: break-all;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.02);
   padding: 1px 4px;
   border-radius: 2px;
   font-family: var(--font);
@@ -552,7 +568,7 @@ body {
 }
 
 .result-row:hover {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.015);
 }
 
 .result-label {
@@ -564,24 +580,24 @@ body {
 .result-value {
   font-size: 11px;
   word-break: break-all;
-  color: var(--text-white);
+  color: var(--text-bright);
   font-family: var(--font);
 }
 
 .result-highlight {
-  background: rgba(96, 165, 250, 0.06);
+  background: rgba(110, 143, 187, 0.04);
   border-left: 2px solid var(--c-shared);
   padding-left: 8px;
 }
 
 .result-success {
-  background: rgba(74, 222, 128, 0.06);
+  background: rgba(106, 171, 142, 0.04);
   border-left: 2px solid var(--c-success);
   padding-left: 8px;
 }
 
 .result-error {
-  background: rgba(248, 113, 113, 0.06);
+  background: rgba(160, 85, 101, 0.04);
   border-left: 2px solid var(--c-error);
   padding-left: 8px;
 }
@@ -606,12 +622,12 @@ body {
 
 .verification-success {
   border-left-color: var(--c-success);
-  background: rgba(74, 222, 128, 0.04);
+  background: rgba(106, 171, 142, 0.03);
 }
 
 .verification-error {
   border-left-color: var(--c-error);
-  background: rgba(248, 113, 113, 0.04);
+  background: rgba(160, 85, 101, 0.03);
 }
 
 .verification-result {
@@ -632,7 +648,7 @@ body {
 
 /* ====== Info & Error Boxes ====== */
 .info-box {
-  border-left: 2px solid var(--c-shared);
+  border-left: 2px solid var(--bg-control-hover);
   padding: 6px 10px;
   margin-bottom: 10px;
   font-size: 11px;
@@ -662,7 +678,7 @@ body {
   max-width: 280px;
   height: auto;
   margin: 8px 0;
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 /* ====== Announcer Section ====== */
@@ -691,27 +707,27 @@ body {
 }
 
 .flow-sender {
-  background: rgba(248, 113, 113, 0.12);
+  background: rgba(180, 99, 122, 0.08);
   color: var(--c-private);
-  border: 1px solid rgba(248, 113, 113, 0.25);
+  border: 1px solid rgba(180, 99, 122, 0.18);
 }
 
 .flow-contract {
-  background: rgba(96, 165, 250, 0.12);
+  background: rgba(110, 143, 187, 0.08);
   color: var(--c-shared);
-  border: 1px solid rgba(96, 165, 250, 0.25);
+  border: 1px solid rgba(110, 143, 187, 0.18);
 }
 
 .flow-event {
-  background: rgba(251, 191, 36, 0.12);
+  background: rgba(184, 157, 106, 0.08);
   color: var(--c-formula);
-  border: 1px solid rgba(251, 191, 36, 0.25);
+  border: 1px solid rgba(184, 157, 106, 0.18);
 }
 
 .flow-recipient {
-  background: rgba(74, 222, 128, 0.12);
+  background: rgba(122, 168, 122, 0.08);
   color: var(--c-public);
-  border: 1px solid rgba(74, 222, 128, 0.25);
+  border: 1px solid rgba(122, 168, 122, 0.18);
 }
 
 .flow-arrow {
@@ -834,7 +850,7 @@ body {
 }
 
 .meta-input-group select:focus {
-  border-color: var(--text-dim);
+  border-color: var(--bg-control-hover);
 }
 
 .metadata-description {
@@ -862,7 +878,7 @@ body {
   word-break: break-all;
   font-size: 10px;
   font-family: var(--font);
-  color: var(--text-white);
+  color: var(--text-bright);
   max-height: 80px;
   overflow-y: auto;
 }
@@ -890,7 +906,7 @@ body {
 
 .event-example-field code {
   word-break: break-all;
-  color: var(--text-white);
+  color: var(--text-bright);
   font-family: var(--font);
 }
 
@@ -915,26 +931,22 @@ body {
   word-break: break-all;
   font-family: var(--font);
   font-size: 11px;
-  color: var(--text-white);
+  color: var(--text-bright);
 }
 
 /* ====== Animations ====== */
 @keyframes slideIn {
-  from { opacity: 0; transform: translateY(6px); }
+  from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes highlightFlash {
-  0% { background: rgba(251, 191, 36, 0.15); }
+  0% { background: rgba(110, 143, 187, 0.08); }
   100% { background: transparent; }
 }
 
-.step-panel {
-  animation: slideIn 0.2s ease;
-}
-
 .value-changed {
-  animation: highlightFlash 0.6s ease;
+  animation: highlightFlash 0.8s ease;
 }
 
 /* ====== Responsive ====== */
