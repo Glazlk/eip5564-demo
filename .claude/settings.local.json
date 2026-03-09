@@ -12,7 +12,10 @@
       "Read(//c/Users/Glazlk/AppData/Roaming/GitHub CLI/**)",
       "Read(//c/Users/Glazlk/.config/gh/**)",
       "Bash(cmd.exe /c \"gh auth status\")",
-      "Bash(cmd.exe /c \"gh auth status 2>&1\")"
+      "Bash(cmd.exe /c \"gh auth status 2>&1\")",
+      "Bash(gh run watch --repo Glazlk/eip5564-demo)",
+      "Bash(gh run list --limit 1 --repo Glazlk/eip5564-demo)",
+      "Bash(gh run watch 22845461612 --repo Glazlk/eip5564-demo)"
     ]
   }
 }
